@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PeriodicTable from './components/PeriodicTable';
 import ElectronConfiguration from './components/ElectronConfiguration';
 import OrbitalVisualization from './components/OrbitalVisualization';
+import EnergyLevelVisualization from './components/EnergyLevelVisualization';
+import CombinedVisualization from './components/CombinedVisualization';
 import SearchBar from './components/SearchBar';
 import { Element } from './types';
 
@@ -17,7 +19,7 @@ function App() {
         <div className="w-full lg:w-2/3">
           <PeriodicTable onElementSelect={setSelectedElement} selectedElement={selectedElement} />
         </div>
-        <div className="w-full lg:w-1/3">
+        <div className="grid grid-cols-4 gap-1">
           {selectedElement && (
             <>
               <ElectronConfiguration
@@ -26,6 +28,8 @@ function App() {
                 onToggleNotation={() => setUseNobleGasNotation(!useNobleGasNotation)}
               />
               <OrbitalVisualization element={selectedElement} />
+              <EnergyLevelVisualization  element={selectedElement} />
+              <CombinedVisualization  element={selectedElement} />
             </>
           )}
         </div>
